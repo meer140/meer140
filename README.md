@@ -4,7 +4,7 @@ Hello World!..
 <!--- Adding Header Elements -->
 <p align="center">
   <a href="https://www.linkedin.com/in/mirmustafa2007">LinkedIn</a> - 
-  <a href="https://x.com/MirMustafa014">Twitter</a> -
+  <a href="https://x.com/MirMustafa014">Twitter</a>
 </p> 
 
 -----------------------------------------------------------
@@ -35,6 +35,4 @@ Hello World!..
 <img  src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=meer140&theme=tokyonight" >
 <img  src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=meer140&theme=tokyonight">
 
-<!--- Adding Tech Stack open Section -->
-## 🏆 My Trophies
-![My Trophies](https://github-profile-trophy.vercel.app/?username=meer140)
+
