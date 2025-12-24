@@ -10,8 +10,7 @@ Hello World!..
 -----------------------------------------------------------
 👨🏻‍💻 **About Me**<img src="https://raw.githubusercontent.com/sanjay-kv/sanjay-kv/main/Assets/illustration.png" min-width="300px" max-width="300px" width="350px" align="right"> 
 ✨ AI\ML Enthusiast| @CUI <br>
-👯 Contact on  [WhatsApp](http://wa.me/923429095969)<br>
-💬 Ask me about AI/Web Development.<br>
+💬 Ask me about AI and Machine Learning.<br>
 
 <br><br>
 <br><br>
@@ -34,5 +33,11 @@ Hello World!..
 <img  src="https://github-readme-activity-graph.vercel.app/graph?username=meer140&theme=react-dark" >
 <img  src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=meer140&theme=tokyonight" >
 <img  src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=meer140&theme=tokyonight">
+
+## ✉️ Contact
+- LinkedIn: https://www.linkedin.com/in/mirmustafa2007
+- Twitter: https://x.com/MirMustafa014
+- WhatsApp: http://wa.me/923429095969
+- Email: mirmustafa2005ali@gmail.com
 
 
