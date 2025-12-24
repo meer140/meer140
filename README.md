@@ -1,9 +1,9 @@
 Hello World!.. 
-<h1 align="center"> Hi there, I'm <a href="www.linkedin.com/in/mirmustafa2007">Mir Mustafa</a> </h1> 
+<h1 align="center"> Hi there, I'm <a href="https://www.linkedin.com/in/mirmustafa2007">Mir Mustafa</a> </h1> 
 
 <!--- Adding Header Elements -->
 <p align="center">
-  <a href="www.linkedin.com/in/mirmustafa2007">LinkedIn</a> - 
+  <a href="https://www.linkedin.com/in/mirmustafa2007">LinkedIn</a> - 
   <a href="https://x.com/MirMustafa014">Twitter</a> -
 </p> 
 
