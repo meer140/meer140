@@ -1,43 +1,98 @@
-Hello World!.. 
-<h1 align="center"> Hi there, I'm <a href="https://www.linkedin.com/in/mirmustafa2007">Mir Mustafa</a> </h1> 
+# 👋 Hey, I'm Mir Mustafa!
 
-<!--- Adding Header Elements -->
-<p align="center">
-  <a href="https://www.linkedin.com/in/mirmustafa2007">LinkedIn</a> - 
-  <a href="https://x.com/MirMustafa014">Twitter</a>
-</p> 
+**Full-Stack Developer | ML Enthusiast | Backend Engineer**
 
------------------------------------------------------------
-👨🏻‍💻 **About Me**<img src="https://raw.githubusercontent.com/sanjay-kv/sanjay-kv/main/Assets/illustration.png" min-width="300px" max-width="300px" width="350px" align="right"> 
-✨ AI\ML Enthusiast| @CUI <br>
-💬 Ask me about AI and Machine Learning.<br>
+Welcome to my GitHub! I'm passionate about building scalable applications, exploring machine learning, and solving real-world problems through code. Currently focused on full-stack web development and backend optimization.
 
-<br><br>
-<br><br>
-<br><br>
+---
 
-## GitHub Status
-<img  src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=meer140&theme=tokyonight"  align="left" >
-<img  src="https://github-stats-lemon.vercel.app/api?username=meer140&show_icons=true&hide_border=true&theme=react" >
-<img  src="https://github-readme-streak-stats.herokuapp.com/?user=meer140&theme=tokyonight" >
+## 🚀 About Me
 
-## Languages Status
+- 🔧 **Full-Stack Developer** with expertise in Node.js, Express, React, and MongoDB
+- 🤖 **Machine Learning** enthusiast working with Python, Jupyter Notebooks, and data science
+- 💻 **Backend Specialist** building robust APIs with modern authentication and cloud integration
+- 📚 **Continuous Learner** always exploring new technologies and best practices
+- 🎯 **Problem Solver** dedicated to writing clean, efficient, and maintainable code
 
-<img  src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=meer140&theme=tokyonight"  align="left">
-<img  src="https://github-readme-stats.vercel.app/api/top-langs/?username=meer140&theme=tokyonight"  >
-<img  src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=meer140&theme=tokyonight" >
+---
 
+## 🛠️ Tech Stack
 
-## Contribution Graph
+**Languages**
+- JavaScript | Python | Java | SQL
 
-<img  src="https://github-readme-activity-graph.vercel.app/graph?username=meer140&theme=react-dark" >
-<img  src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=meer140&theme=tokyonight" >
-<img  src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=meer140&theme=tokyonight">
+**Frontend**
+- React | HTML5 | CSS3 | Responsive Design
 
-## ✉️ Contact
-- LinkedIn: https://www.linkedin.com/in/mirmustafa2007
-- Twitter: https://x.com/MirMustafa014
-- WhatsApp: http://wa.me/923429095969
-- Email: mirmustafa2005ali@gmail.com
+**Backend**
+- Node.js | Express.js | RESTful APIs | Microservices
 
+**Database**
+- MongoDB | MySQL | Mongoose ODM
 
+**Cloud & Tools**
+- Cloudinary | JWT Authentication | Vercel | Git
+
+**ML & Data Science**
+- Python | Jupyter Notebook | Pandas | Scikit-learn | NLP
+
+---
+
+## 📊 Key Skills
+
+| Category | Skills |
+|----------|--------|
+| **Backend Development** | Node.js, Express, RESTful APIs, JWT Auth, Bcrypt |
+| **Database** | MongoDB, MySQL, Mongoose ODM, Data Modeling |
+| **Frontend** | React, HTML/CSS, JavaScript, Responsive UI |
+| **Cloud & Integration** | Cloudinary, Vercel, Environment Management |
+| **Machine Learning** | Data Science, Classification, Recommendation Systems |
+| **Tools & Practices** | Git, REST APIs, Code Formatting (Prettier), Best Practices |
+
+---
+
+## 📈 GitHub Statistics
+
+- **Repositories**: 10+
+- **Languages**: JavaScript, Python, Java, Jupyter Notebook
+- **Focus Areas**: Full-Stack Development, Machine Learning, Backend Engineering
+
+---
+
+## 🎓 Learning & Growth
+
+- 🔍 Currently exploring: Advanced backend optimization, microservices architecture
+- 📚 Expanding knowledge in: Cloud deployment, Docker, CI/CD pipelines
+- 🎯 Goals: Build impactful projects, contribute to open source, master system design
+
+---
+
+## 💡 What I Do
+
+- ✅ Design and develop scalable backend systems
+- ✅ Build full-stack applications with modern tech stacks
+- ✅ Implement secure authentication and authorization
+- ✅ Integrate cloud services for media management
+- ✅ Create intelligent ML models for real-world problems
+- ✅ Write clean, documented, and maintainable code
+
+---
+
+## 📫 Let's Connect!
+
+- 💼 **GitHub**: [@meer140](https://github.com/meer140)
+- 📧 **Email**: mirmustafa2005ali@gmail.com
+- 🔗 **LinkedIn**: [mir-mustafa](https://www.linkedin.com/in/mirmustafa2007)
+- 𝕏 **Twitter**: [@MirMustafa014](https://x.com/MirMustafa014)
+
+Feel free to explore my repositories, fork projects, and collaborate on exciting ideas! I'm always open to discussions about technology, development practices, and innovative solutions.
+
+---
+
+<div align="center">
+
+**Thanks for visiting! Happy Coding! 🚀**
+
+![Profile Views](https://komarev.com/ghpvc/?username=meer140&label=Profile%20Views&color=0e75b6&style=flat)
+
+</div>
