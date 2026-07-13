@@ -78,6 +78,12 @@
       transform: translateY(0);
     }
     
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
     .output-section {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -103,6 +109,7 @@
       height: auto;
       border-radius: 8px;
       margin-bottom: 15px;
+      border: 2px solid #ddd;
     }
     
     #bw-canvas {
@@ -111,6 +118,7 @@
       max-width: 100%;
       height: auto;
       display: block;
+      background: #f0f0f0;
     }
     
     #ascii {
@@ -194,6 +202,13 @@
       cursor: pointer;
     }
     
+    .loading {
+      text-align: center;
+      color: #667eea;
+      font-weight: bold;
+      padding: 15px;
+    }
+    
     @media (max-width: 768px) {
       .output-section {
         grid-template-columns: 1fr;
@@ -214,8 +229,8 @@
     <h1>🎨 GitHub Profile Image Encoder</h1>
     
     <div class="input-group">
-      <input id="username" type="text" placeholder="Enter GitHub username (e.g., meer140)" value="meer140" />
-      <button onclick="processImage()">Encode</button>
+      <input id="username" type="text" placeholder="Enter GitHub username (e.g., torvalds)" value="torvalds" />
+      <button id="encodeBtn" onclick="processImage()">Encode</button>
     </div>
     
     <div class="size-control">
@@ -233,7 +248,7 @@
     <div class="output-section" id="output" style="display: none;">
       <div class="section">
         <h2>📷 Original & B/W Canvas</h2>
-        <img id="original-img" style="display: none;" alt="Original profile" />
+        <img id="original-img" alt="Original profile" />
         <canvas id="bw-canvas"></canvas>
       </div>
       
@@ -254,83 +269,122 @@
   <script>
     let binaryArray = [];
     let asciiArt = '';
+    let currentImageBlob = null;
     
     async function processImage() {
       const username = document.getElementById('username').value.trim();
       const size = document.getElementById('size').value;
       const messageDiv = document.getElementById('message');
+      const encodeBtn = document.getElementById('encodeBtn');
       
       if (!username) {
         messageDiv.innerHTML = '<div class="error">❌ Please enter a GitHub username</div>';
         return;
       }
       
-      messageDiv.innerHTML = '';
+      messageDiv.innerHTML = '<div class="loading">⏳ Loading image...</div>';
+      encodeBtn.disabled = true;
       
-      // Use avatars.githubusercontent.com instead of github.com for CORS compatibility
-      const url = `https://avatars.githubusercontent.com/${username}?s=${size}`;
-      const img = new Image();
-      img.crossOrigin = "anonymous";
-      
-      img.onload = function() {
-        try {
-          const canvas = document.getElementById('bw-canvas');
-          canvas.width = size;
-          canvas.height = size;
-          
-          const ctx = canvas.getContext('2d');
-          ctx.drawImage(img, 0, 0, size, size);
-          
-          // Display original image
-          const originalImg = document.getElementById('original-img');
-          originalImg.src = url;
-          originalImg.style.display = 'block';
-          
-          const imgData = ctx.getImageData(0, 0, size, size);
-          const data = imgData.data;
-          
-          binaryArray = [];
-          asciiArt = '';
-          
-          for (let y = 0; y < size; y++) {
-            let row = [];
-            for (let x = 0; x < size; x++) {
-              let idx = (y * size + x) * 4;
-              let r = data[idx];
-              let g = data[idx + 1];
-              let b = data[idx + 2];
-              
-              // Convert to grayscale
-              let gray = 0.299 * r + 0.587 * g + 0.114 * b;
-              
-              // Threshold to binary (1 = white, 0 = black)
-              let bw = gray > 128 ? 1 : 0;
-              row.push(bw);
-              
-              // ASCII art: space for white, █ for black
-              asciiArt += bw ? ' ' : '█';
-            }
-            binaryArray.push(row);
-            asciiArt += '\n';
-          }
-          
-          // Display results
-          document.getElementById('ascii').textContent = asciiArt;
-          displayPixelArray();
-          document.getElementById('output').style.display = 'grid';
-          document.getElementById('arraySection').style.display = 'block';
-          
-          messageDiv.innerHTML = `<div class="success">✅ Successfully encoded ${username}'s profile image (${size}x${size})</div>`;
-        } catch (e) {
-          messageDiv.innerHTML = `<div class="error">❌ Error processing image: ${e.message}</div>`;
+      try {
+        // Fetch the avatar using GitHub API for better reliability
+        const apiUrl = `https://api.github.com/users/${username}`;
+        const response = await fetch(apiUrl);
+        
+        if (!response.ok) {
+          throw new Error('GitHub user not found');
         }
-      };
-      
-      img.onerror = () => {
-        messageDiv.innerHTML = `<div class="error">❌ Failed to load image. Username may be incorrect or image unavailable.</div>`;
-      };
-      
-      img.src = url;
+        
+        const userData = await response.json();
+        const avatarUrl = userData.avatar_url;
+        
+        if (!avatarUrl) {
+          throw new Error('User has no avatar');
+        }
+        
+        // Fetch the avatar image with size parameter
+        const imageUrl = `${avatarUrl}&s=${size}`;
+        const imgResponse = await fetch(imageUrl);
+        
+        if (!imgResponse.ok) {
+          throw new Error('Failed to load avatar image');
+        }
+        
+        const blob = await imgResponse.blob();
+        const url = URL.createObjectURL(blob);
+        currentImageBlob = blob;
+        
+        // Create an image object to draw to canvas
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+        
+        img.onload = function() {
+          try {
+            const canvas = document.getElementById('bw-canvas');
+            canvas.width = size;
+            canvas.height = size;
+            
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, size, size);
+            
+            // Display original image
+            const originalImg = document.getElementById('original-img');
+            originalImg.src = url;
+            
+            const imgData = ctx.getImageData(0, 0, size, size);
+            const data = imgData.data;
+            
+            binaryArray = [];
+            asciiArt = '';
+            
+            for (let y = 0; y < size; y++) {
+              let row = [];
+              for (let x = 0; x < size; x++) {
+                let idx = (y * size + x) * 4;
+                let r = data[idx];
+                let g = data[idx + 1];
+                let b = data[idx + 2];
+                
+                // Convert to grayscale using standard luminosity formula
+                let gray = 0.299 * r + 0.587 * g + 0.114 * b;
+                
+                // Threshold to binary (1 = white, 0 = black)
+                let bw = gray > 128 ? 1 : 0;
+                row.push(bw);
+                
+                // ASCII art: space for white, █ for black
+                asciiArt += bw ? ' ' : '█';
+              }
+              binaryArray.push(row);
+              asciiArt += '\n';
+            }
+            
+            // Display results
+            document.getElementById('ascii').textContent = asciiArt;
+            displayPixelArray();
+            document.getElementById('output').style.display = 'grid';
+            document.getElementById('arraySection').style.display = 'block';
+            
+            messageDiv.innerHTML = `<div class="success">✅ Successfully encoded <strong>${userData.login}</strong>'s profile image (${size}x${size})</div>`;
+            encodeBtn.disabled = false;
+            
+            // Clean up blob URL
+            URL.revokeObjectURL(url);
+          } catch (e) {
+            messageDiv.innerHTML = `<div class="error">❌ Error processing image: ${e.message}</div>`;
+            encodeBtn.disabled = false;
+          }
+        };
+        
+        img.onerror = () => {
+          messageDiv.innerHTML = `<div class="error">❌ Failed to process image data. Try a different user.</div>`;
+          encodeBtn.disabled = false;
+        };
+        
+        img.src = url;
+      } catch (e) {
+        messageDiv.innerHTML = `<div class="error">❌ Error: ${e.message}. Make sure the GitHub username is correct.</div>`;
+        encodeBtn.disabled = false;
+      }
     }
     
     function displayPixelArray() {
@@ -353,6 +407,8 @@
     function copyAscii() {
       navigator.clipboard.writeText(asciiArt).then(() => {
         alert('✅ ASCII art copied to clipboard!');
+      }).catch(() => {
+        alert('❌ Failed to copy to clipboard');
       });
     }
     
@@ -360,6 +416,8 @@
       const arrayStr = JSON.stringify(binaryArray);
       navigator.clipboard.writeText(arrayStr).then(() => {
         alert('✅ Pixel array copied to clipboard!');
+      }).catch(() => {
+        alert('❌ Failed to copy to clipboard');
       });
     }
     
