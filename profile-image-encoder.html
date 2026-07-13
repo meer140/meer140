@@ -267,7 +267,8 @@
       
       messageDiv.innerHTML = '';
       
-      const url = `https://github.com/${username}.png?size=${size}`;
+      // Use avatars.githubusercontent.com instead of github.com for CORS compatibility
+      const url = `https://avatars.githubusercontent.com/${username}?s=${size}`;
       const img = new Image();
       img.crossOrigin = "anonymous";
       
